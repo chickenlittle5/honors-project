@@ -14,15 +14,7 @@ Main method
 int main()
 {
 
-    /*
-     * t0.txt
-Number of objects: 4
-Object 1 area: 6
-Object 2 area: 9
-Object 3 area: 1
-Object 4 area: 17
-     */
-    string fileName = "t5.txt";
+    string fileName = "t4.txt";
     cout << "File name: " << fileName << endl;
     // cin >> fileName;
     ifstream ifs(fileName);

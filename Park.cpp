@@ -14,7 +14,10 @@
  * 
  * @param ifs   the input file stream where the file is read into
  */
-Park::Park(ifstream &ifs) {
+
+// issue should be in here for error in t4 printing.
+// issue is that the bottom right corner is empty
+Park::Park(ifstream &ifs) { 
     ifs >> _rowCount >> _colCount >> ws;
     _park = new cell[cellCount()];
     string line;
@@ -99,13 +102,16 @@ void Park::getNumObjectsStack() {
                 s.push(at(i, j));
                 while (!s.isEmpty()) {
                     cell c = s.pop();
-                    if (inBounds(c) && !c.found && c.value != '0') {
-                        int x = c.row;
-                        int y = c.col;
-                        char value = c.value;
+                    int x = c.row;
+                    int y = c.col;
+                    char value = c.value;
+                    // initially put c.found but that doesnt work because it uses the cell value in the stack and not the matrix
+                    if (inBounds(c) && !at(x, y).found && (value != '0')) { 
+                        
                         set(x, y, value, true); // set found to true
                         area++;
 
+                        //push upper, lower, left, right
                         s.push(at(x, y + 1));
                         s.push(at(x, y - 1));
                         s.push(at(x - 1, y));
