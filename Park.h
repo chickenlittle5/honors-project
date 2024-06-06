@@ -35,5 +35,6 @@ public:
     void print();
 
     void getNumObjectsStack();
-    int getNumObjectsRecursion();
+    int check(cell c);
+    void getNumObjectsRecursion();
 };

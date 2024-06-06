@@ -14,7 +14,7 @@ Main method
 int main()
 {
 
-    string fileName = "t4.txt";
+    string fileName = "t0.txt";
     cout << "File name: " << fileName << endl;
     // cin >> fileName;
     ifstream ifs(fileName);
@@ -26,6 +26,8 @@ int main()
     Park park(ifs);
     park.print();
     park.getNumObjectsStack();
+    cout << endl;
+    park.getNumObjectsRecursion();
 
     return 0;
 }

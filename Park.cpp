@@ -89,8 +89,6 @@ void Park::print() {
 }
 
 void Park::getNumObjectsStack() {
-
-
     int numObjects = 0;
     vector<int> areas;
     Stack<cell> s;
@@ -129,4 +127,50 @@ void Park::getNumObjectsStack() {
     for (int i = 0; i < areas.size(); i++) {
         cout << "Object num " << i + 1  << " area: " << areas[i] << endl;
     }
+}
+
+int Park::check(cell c) {
+
+    int row = c.row;
+    int col = c.col;
+    
+    if (!inBounds(row, col) || c.value == '0' || c.found) { // base case: out of bounds, '0', or already found
+        return 0; 
+    }
+
+    set(row, col, c.value, true);
+    
+    int area = 1;
+    area += check(at(row, col + 1));
+    area += check(at(row, col - 1));
+    area += check(at(row - 1, col));
+    area += check(at(row + 1, col));
+
+    return area;
+}
+
+void Park::getNumObjectsRecursion() {
+
+    int numObjects = 0;
+    vector<int> areas;
+
+    for (int i = 0; i < getRowCount(); i++) {
+        for (int j = 0; j < getColCount(); j++) {
+            cell c = at(i, j);
+            if (c.value != '0' && !c.found) {
+                if (c.value != '0' && !c.found) {
+                int area = check(c);
+                areas.push_back(area);
+                numObjects++;
+                }
+            }
+        }
+    }
+
+    cout << "Recursive solution" << endl;
+    cout << "Num objects: " << numObjects << endl;
+    for (int i = 0; i < areas.size(); i++) {
+        cout << "Object num " << i + 1  << " area: " << areas[i] << endl;
+    }
+
 }
