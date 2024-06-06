@@ -133,9 +133,8 @@ int Park::check(cell c) {
 
     int row = c.row;
     int col = c.col;
-    
-    if (!inBounds(row, col) || c.value == '0' || c.found) { // base case: out of bounds, '0', or already found
-        return 0; 
+    if (!inBounds(row, col) || c.value == '0' || c.found) {
+        return 0;
     }
 
     set(row, col, c.value, true);
@@ -158,11 +157,8 @@ void Park::getNumObjectsRecursion() {
         for (int j = 0; j < getColCount(); j++) {
             cell c = at(i, j);
             if (c.value != '0' && !c.found) {
-                if (c.value != '0' && !c.found) {
-                int area = check(c);
-                areas.push_back(area);
+                areas.push_back(check(c));
                 numObjects++;
-                }
             }
         }
     }
