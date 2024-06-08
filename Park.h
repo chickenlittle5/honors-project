@@ -10,6 +10,7 @@ struct cell {
     int row;
     int col;
 
+    // cell default contructor
     cell() : value('0'), found(false), row(0), col(0) {}
 };
 

@@ -9,8 +9,8 @@ using namespace std;
 
 
 /*
-Main method
-*/
+ * Main method/menu
+ */
 int main()
 {
 

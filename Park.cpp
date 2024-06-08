@@ -68,8 +68,12 @@ bool Park::inBounds(cell c) {
 }
 
 /*
- * Sets the value 
- *
+ * Sets the value of the cell in the specified row and col with the given
+ * parameters
+ * @param row - row of the cell
+ * @param col - column of the cell
+ * @param value - value of the cell
+ * @param found - determines of cell has been found already
  */
 void Park::set(int row, int col, char value, bool found) {
     cell& c = _park[row * _colCount + col];
@@ -79,6 +83,9 @@ void Park::set(int row, int col, char value, bool found) {
     c.found = found;
 }
 
+/*
+ * Prints the entire park
+ */
 void Park::print() {
     for (int i = 0; i < _rowCount; i++) {
         for (int j = 0; j < _colCount; j++) {
@@ -88,6 +95,21 @@ void Park::print() {
     }
 }
 
+/*
+ * Stack function
+ * Iterates through the park until first object is found
+ * If the cell is a valid cell meaning that it is within bounds
+ * and has not been found yet, then push that item onto a stack
+ * Loop until the stack is empty. In the loop, pop the stack 
+ * and save that value into c. If c is valid, set its found 
+ * value to true and increment area. Push adjacent cells.
+ * 
+ * Once loop terminates, increment the number of objects and add
+ * the area to a vector. Repeat until finished interating through
+ * park.
+ * 
+ * Print solution
+ */
 void Park::getNumObjectsStack() {
     int numObjects = 0;
     vector<int> areas;
@@ -129,6 +151,11 @@ void Park::getNumObjectsStack() {
     }
 }
 
+/*
+ * Recursive function that checks the cell to determin validity
+ * and returns the area of the object
+ * @param c - a given cell in the park
+ */
 int Park::check(cell c) {
 
     int row = c.row;
@@ -148,6 +175,13 @@ int Park::check(cell c) {
     return area;
 }
 
+/*
+ * Iterates through the park until the first instance of an object
+ * Once found, call the check recursive function and add that int
+ * value to the areas vector. Increment the number of objects. 
+ * 
+ * Print solution
+ */
 void Park::getNumObjectsRecursion() {
 
     int numObjects = 0;
