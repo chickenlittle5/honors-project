@@ -16,7 +16,6 @@ int main()
 
     string fileName = "";
     string method;
-    cout << "Enter File name: " << endl;
     cout << "t0.txt" << endl;
     cout << "t1.txt" << endl;
     cout << "t2.txt" << endl;
@@ -24,7 +23,9 @@ int main()
     cout << "t4.txt" << endl;
     cout << "t5.txt" << endl;
     cout << "test.txt" << endl;
+    cout << "Enter File name: ";
     cin >> fileName;
+    cout << endl;
 
     ifstream ifs(fileName);
     if (!ifs.is_open()) {

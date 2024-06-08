@@ -152,7 +152,7 @@ void Park::getNumObjectsStack() {
 }
 
 /*
- * Recursive function that checks the cell to determin validity
+ * Recursive function that checks the cell to determine validity
  * and returns the area of the object
  * @param c - a given cell in the park
  */
